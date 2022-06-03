@@ -3,16 +3,13 @@ import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import { createReadStream } from 'fs';
+import { readFile } from 'fs/promises';
 
 export const read = async () => {
   const pathToFile = join(__dirname, 'files', 'fileToRead.txt');
 
-      const readStream = createReadStream(pathToFile);
-      readStream.on('data', chunk => process.stdout.write(chunk));
-
-      readStream.on('error', () => {throw new Error('FS operation failed')});
-
+      const data = await readFile(pathToFile);
+      process.stdout.write(data);
 };
 
 read();
