@@ -4,20 +4,28 @@ import { cpus } from 'os';
 export const performCalculations = async () => {
   const basicNum = 10;
   const numberOfCpuCores = cpus().length;
+
+  let promisesArr = [];
   let resultsArr = [];
 
   for (let i = 0; i < numberOfCpuCores; i++){
-    const worker = new Worker('./worker.js');
-    const argForWorker = basicNum + i;
-    worker.postMessage(argForWorker);
-    worker.on('message', (msg) => {
-      console.log(argForWorker +' result '+ msg.status + msg.data );
-      resultsArr.push(msg);
-      console.log(resultsArr);
-    });
+    promisesArr[i] = new Promise((resolve, reject) => {
+      const worker = new Worker('./worker.js');
+      const argForWorker = basicNum + i;
+      worker.postMessage(argForWorker);
+      worker.on('message', (msg) => {
+        resultsArr.push(msg);
+
+        resolve();
+
+        });
+      });
   }
 
+  await Promise.all(promisesArr);
+
   console.log(resultsArr);
+
 };
 
 performCalculations();
