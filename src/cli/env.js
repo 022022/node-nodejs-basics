@@ -4,7 +4,7 @@ export const parseEnv = () => {
 
   let result = '';
   const rssVars = Object.keys(process.env).filter(item => {
-    if (item.includes('RSS_')){
+    if (item.startsWith('RSS_')){
       result += `${item}:${process.env[item]}; `;
     }
   });
