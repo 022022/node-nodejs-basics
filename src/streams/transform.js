@@ -11,7 +11,7 @@ export const transform = async () => {
     }
   });
 
-  pipeline(process.stdin, reverseStr, process.stdout, ()=>{});
+  pipeline(process.stdin, reverseStr, process.stdout, (err)=>{ throw new Error(err)});
 
 };
 
