@@ -1,3 +1,7 @@
+// Task
+// implement function that reads file fileToRead.txt content using Readable Stream and prints it's content into process.stdout
+
+
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);

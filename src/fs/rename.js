@@ -1,3 +1,7 @@
+// Task
+// implement function that renames file wrongFilename.txt to properFilename with extension .md (if there's no file wrongFilename.txt or properFilename.md already exists Error with message FS operation failed must be thrown)
+
+
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);

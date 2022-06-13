@@ -1,3 +1,6 @@
+// Task
+// implement function that compresses file fileToCompress.txt to archive.gz using zlib and Streams API
+
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);

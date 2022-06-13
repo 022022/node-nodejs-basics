@@ -1,3 +1,6 @@
+// Task
+// implement function that calculates SHA256 hash for file fileToCalculateHashFor.txt and return it as hex
+
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
@@ -14,7 +17,7 @@ export const calculateHash = async () => {
     const hashObj = createHash('sha256');
     hashObj.update(data);
     const hex = hashObj.digest('hex');
-    
+
     console.log(hex);
     return hex;
 };

@@ -1,3 +1,6 @@
+// Task
+// implement function that deletes file fileToRemove.txt (if there's no file fileToRemove.txt Error with message FS operation failed must be thrown)
+
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);

@@ -1,3 +1,6 @@
+// Task
+// implement function that writes process.stdin data into file fileToWrite.txt content using Writable Stream
+
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);

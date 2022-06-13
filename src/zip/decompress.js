@@ -1,3 +1,7 @@
+// Task
+// implement function that decompresses archive.gz back to the fileToCompress.txt with same content as before compression using zlib and Streams API
+
+
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
