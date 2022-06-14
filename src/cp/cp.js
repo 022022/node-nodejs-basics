@@ -4,12 +4,10 @@
 // - child process stdout should send data to master process stdout
 
 
-
 import { fork } from 'child_process';
 
 export const spawnChildProcess = async (args) => {
-
-  const childProcess = fork("./files/script.js", [1,2]);
+  const childProcess = fork("./files/script.js", args);
 };
 
-spawnChildProcess();
+spawnChildProcess([1,2]);

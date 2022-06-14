@@ -1,12 +1,6 @@
 // Task
 // rewrite it to it's equivalent in ECMAScript notation (and switch extension to .mjs)
 
-
-
-// const path = require('path');
-// const { release, version } = require('os');
-// const { createServer: createServerHttp } = require('http');
-
 import * as path from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
@@ -17,24 +11,17 @@ import { join, dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-
-
-const a = readFile(join(__dirname, 'files', 'a.json'));
-const b = readFile(join(__dirname, 'files', 'b.json'));
-const c = readFile(join(__dirname, 'files', 'c.js'));
-
-// require('./files/c');
+import './files/c.js';
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-    // unknownObject = require('./files/a.json');
-    unknownObject = a;
+  await import('./files/a.json', { assert: { type: 'json' } });
+  // v2 - import createRequire from 'module'
 } else {
-    // unknownObject = require('./files/b.json');
-    unknownObject = b;
+  await import('./files/b.json', { assert: { type: 'json' } });
 }
 
 console.log(`Release ${release()}`);
@@ -47,11 +34,5 @@ console.log(`Path to current directory is ${__dirname}`);
 const createMyServer = createServerHttp((_, res) => {
     res.end('Request accepted');
 });
-
-//module.exports = {
-//    unknownObject,
-//    createMyServer,
-//};
-
 
 export {unknownObject, createMyServer};

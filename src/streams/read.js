@@ -1,21 +1,16 @@
 // Task
 // implement function that reads file fileToRead.txt content using Readable Stream and prints it's content into process.stdout
 
-
-import { fileURLToPath } from 'url'
-import { join, dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+import { getPath } from '../getPath.js'
 import { createReadStream } from 'fs';
 
 export const read = async () => {
-  const pathToFile = join(__dirname, 'files', 'fileToRead.txt');
+  const pathToFile = getPath(import.meta.url, 'files/fileToRead.txt');
 
-      const readStream = createReadStream(pathToFile);
-      readStream.on('data', chunk => process.stdout.write(chunk));
+  const readStream = createReadStream(pathToFile);
+  readStream.on('data', chunk => process.stdout.write(chunk));
 
-      readStream.on('error', () => {throw new Error('FS operation failed')});
+  readStream.on('error', () => {throw new Error('FS operation failed')});
 
 };
 

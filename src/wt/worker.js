@@ -8,7 +8,11 @@ export const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacc
 export const sendResult = async (data) => {
   try{
     const result = await nthFibonacci(data);
+
+    // if(Math.random() > 0.5) throw new Error(); //uncomment to check what happens if error
+
     parentPort.postMessage({status: 'resolved', data: result});
+
   } catch(err) {
     parentPort.postMessage({status: 'error', data: null});
   }

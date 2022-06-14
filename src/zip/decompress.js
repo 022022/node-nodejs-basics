@@ -1,25 +1,20 @@
 // Task
 // implement function that decompresses archive.gz back to the fileToCompress.txt with same content as before compression using zlib and Streams API
 
-
-import { fileURLToPath } from 'url';
-import { join, dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+import { getPath } from '../getPath.js'
 import { createReadStream, createWriteStream } from 'fs';
 import { createInflate } from 'zlib';
 import { pipeline } from 'stream';
 
 
 export const decompress = async () => {
-  const sourceFile = join(__dirname, 'files', 'archive.gz');
-  const destinationFile = join(__dirname, 'files', 'fileToCompress.txt');
-
+  const sourceFile = getPath(import.meta.url, 'files/archive.gz');
+  const destinationFile = getPath(import.meta.url, 'files/fileToCompress.txt');
+console.log(destinationFile);
   const readStream = createReadStream(sourceFile);
   const writeStream = createWriteStream(destinationFile);
   const decompressFile = createInflate();
-  pipeline(readStream, decompressFile, writeStream, ()=>{});
+  pipeline(readStream, decompressFile , writeStream, ()=>{});
 
 };
 

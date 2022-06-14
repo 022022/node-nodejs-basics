@@ -10,16 +10,18 @@ export const transform = async () => {
     transform(chunk, encryption, callback){
       const str = chunk.toString();
       const strReversed = str.split('').reverse().join('');
-      this.push(strReversed);
+      this.push(strReversed); // v2 - callback(null, strReversed); 
       callback();
     }
   });
 
-  pipeline(process.stdin, reverseStr, process.stdout, (err)=>{ throw new Error(err)});
+  pipeline(
+    process.stdin,
+    reverseStr,
+    process.stdout,
+    (err)=>{ throw new Error(err)}
+  );
 
 };
 
 transform();
-
-//implement function that reads data from process.stdin,
-//reverses text using Transform Stream and then writes it into process.stdout
