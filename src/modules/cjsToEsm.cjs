@@ -1,3 +1,6 @@
+// Task
+// rewrite it to it's equivalent in ECMAScript notation (and switch extension to .mjs)
+
 const path = require('path');
 const { release, version } = require('os');
 const { createServer: createServerHttp } = require('http');
@@ -28,4 +31,3 @@ module.exports = {
     unknownObject,
     createMyServer,
 };
-
