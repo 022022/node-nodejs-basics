@@ -6,7 +6,7 @@ import { getPath } from '../getPath.js';
 import { join } from 'path';
 
 export const copy = async () => {
-    const folderPath = getPath(import.meta.url, 'files');getPath(import.meta.url, 'files');
+    const folderPath = getPath(import.meta.url, 'files');
     const newFolderPath = getPath(import.meta.url, 'files_copy');
 
     try {

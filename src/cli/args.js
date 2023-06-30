@@ -5,10 +5,7 @@
 // node args --propName value --propName value2
 
 export const parseArgs = () => {
-
   const args = process.argv.slice(2);
-
-  console.log(args);
 
   const answer = args.reduce((result, item, index, arr) =>
     {
